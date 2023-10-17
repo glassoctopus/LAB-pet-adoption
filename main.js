@@ -240,3 +240,26 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+  const app = document.querySelector("#app");
+
+  // app.innerHTML = "Hello World!";
+
+  let domString = "";
+  for(pet of pets){
+    domString += `<div class="card element text-center" style="width: 18rem;">
+    <div class="card-header"><h5 class="card-title">${pet.name}</h5></div>
+    <img src="${pet.imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">        
+        <p class="card-text">color: ${pet.color}</p>
+        <p>special skill: ${pet.specialSkill}</p>        
+        <button class="delete" onclick="
+        ">DELETE</button>
+        <div class="card-footer"><p>type: ${pet.type}</p></div>
+    </div>
+    `
+  };
+
+  app.innerHTML = domString;
+
+  

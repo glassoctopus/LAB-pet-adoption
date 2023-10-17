@@ -1,0 +1,9 @@
+body {
+  /* background-color: black;
+  color: white; */
+}
+
+.cardCont {
+  border: 5 solid lightgreen;
+  display: flex;
+}
