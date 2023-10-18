@@ -262,22 +262,22 @@ const renderToDom = (array) => {
 
 renderToDom(pets);
 
-const catButton = document.querySelector("#cat");
+const catButton = document.querySelector("#cat"); //variable that grabs the html cat button from DOM
 
 catButton.addEventListener('click',() => {
-  console.log("cat Button");
+  // console.log("in filter function starting with cats");
+  filter(pets);
 })
 
-const filter = () => {
+const filter = (array) => {
   let petArray = [];
   
-  for(pet of petArray){
-    if(pet.type === cat){
+  for(pet of array){
+    if(pet.type === "cat"){
       petArray.push(pet);
     }
-    renderToDom(petArray);
   }
-//add somthing else
+  renderToDom(petArray);
 }
   // app.innerHTML = "Hello World!";
 
