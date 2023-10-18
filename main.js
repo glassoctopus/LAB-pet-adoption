@@ -241,25 +241,61 @@ const pets = [
     }
   ];
 
-  const app = document.querySelector("#app");
-
-  // app.innerHTML = "Hello World!";
+const renderToDom = (array) => {
 
   let domString = "";
-
-  for(let i=0; i<pets.length; i++){
+  for(object of array) {
     domString += `<div class="card element text-center" style="width: 18rem;">
-    <div class="card-header"><h5 class="card-title">${pets[i].name}</h5></div>
-    <img src="${pets[i].imageUrl}" class="card-img-top" alt="...">
+    <div class="card-header"><h5 class="card-title">${object.name}</h5></div>
+    <img src="${object.imageUrl}" class="card-img-top" alt="...">
     <div class="card-body">        
-        <p class="card-text">color: ${pets[i].color}</p>
-        <p>special skill: ${pets[i].specialSkill}</p>        
+        <p class="card-text">color: ${object.color}</p>
+        <p>special skill: ${object.specialSkill}</p>        
         <button class="delete" onclick="
         ">DELETE</button>
-        <div class="card-footer"><p>type: ${pets[i].type}</p></div>
+        <div class="card-footer"><p>type: ${object.type}</p></div>
     </div>`
   };
-
+  const app = document.querySelector("#app");
   app.innerHTML = domString;
+};
+
+renderToDom(pets);
+
+const catButton = document.querySelector("#cat");
+
+catButton.addEventListener('click',() => {
+  console.log("cat Button");
+})
+
+const filter = () => {
+  let petArray = [];
+  
+  for(pet of petArray){
+    if(pet.type === cat){
+      petArray.push(pet);
+    }
+    renderToDom(petArray);
+  }
+//add somthing else
+}
+  // app.innerHTML = "Hello World!";
+
+ 
+
+  // for(let i=0; i<pets.length; i++){
+  //   domString += `<div class="card element text-center" style="width: 18rem;">
+  //   <div class="card-header"><h5 class="card-title">${pets[i].name}</h5></div>
+  //   <img src="${pets[i].imageUrl}" class="card-img-top" alt="...">
+  //   <div class="card-body">        
+  //       <p class="card-text">color: ${pets[i].color}</p>
+  //       <p>special skill: ${pets[i].specialSkill}</p>        
+  //       <button class="delete" onclick="
+  //       ">DELETE</button>
+  //       <div class="card-footer"><p>type: ${pets[i].type}</p></div>
+  //   </div>`
+  // };
+
+
 
   
