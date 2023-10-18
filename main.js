@@ -277,7 +277,7 @@ const filter = () => {
     }
     renderToDom(petArray);
   }
-
+//add somthing else
 }
   // app.innerHTML = "Hello World!";
 
