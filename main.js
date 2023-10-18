@@ -263,38 +263,34 @@ const renderToDom = (array) => {
 renderToDom(pets);
 
 const catButton = document.querySelector("#cat"); //variable that grabs the html cat button from DOM
+const dogButton = document.querySelector("#dog");
+const dinoButton = document.querySelector("#dino");
 
 catButton.addEventListener('click',() => {
   // console.log("in filter function starting with cats");
-  filter(pets);
+  filter(pets, "cat");
 })
 
-const filter = (array) => {
+dogButton.addEventListener('click',() => {
+  // console.log("in filter function starting with cats");
+  filter(pets, "dog");
+})
+
+dinoButton.addEventListener('click',() => {
+  // console.log("in filter function starting with cats");
+  filter(pets, "dino");
+})
+
+const filter = (array, animalType) => {
   let petArray = [];
   
   for(pet of array){
-    if(pet.type === "cat"){
+    if(pet.type === animalType){
       petArray.push(pet);
     }
   }
   renderToDom(petArray);
 }
-  // app.innerHTML = "Hello World!";
-
- 
-
-  // for(let i=0; i<pets.length; i++){
-  //   domString += `<div class="card element text-center" style="width: 18rem;">
-  //   <div class="card-header"><h5 class="card-title">${pets[i].name}</h5></div>
-  //   <img src="${pets[i].imageUrl}" class="card-img-top" alt="...">
-  //   <div class="card-body">        
-  //       <p class="card-text">color: ${pets[i].color}</p>
-  //       <p>special skill: ${pets[i].specialSkill}</p>        
-  //       <button class="delete" onclick="
-  //       ">DELETE</button>
-  //       <div class="card-footer"><p>type: ${pets[i].type}</p></div>
-  //   </div>`
-  // };
 
 
 
