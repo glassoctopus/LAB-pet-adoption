@@ -245,7 +245,7 @@ const renderToDom = (array) => {
 
   let domString = "";
   for(object of array) {
-    domString += `<div class="card element text-center" style="width: 18rem;">
+    domString += `<div class="card element text-center myCardStyle" style="width: 20rem;">
     <div class="card-header"><h5 class="card-title">${object.name}</h5></div>
     <img src="${object.imageUrl}" class="card-img-top" alt="...">
     <div class="card-body">        
@@ -254,7 +254,8 @@ const renderToDom = (array) => {
         <button class="delete" onclick="
         ">DELETE</button>
         <div class="card-footer"><p>type: ${object.type}</p></div>
-    </div>`
+      </div>
+      </div>`
   };
   const app = document.querySelector("#app");
   app.innerHTML = domString;

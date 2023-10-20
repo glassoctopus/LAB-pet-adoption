@@ -1,9 +1,26 @@
-/* body {
+ /* body {
   background-color: black;
   color: white;
 } */
 
-.cardCont {
-  border: 5 solid lightgreen;
+/* .center {
+  margin: auto;
+  width: 90%;
+  border: 6px solid green;
+  padding: 10px;
   display: flex;
+  flex-wrap: wrap;
+} */
+
+#app {
+  border: 6px solid yellow;
+  margin-block: 3px;
+  display: flex;
+  flex-flow: wrap;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.myCardStyle {
+  margin-bottom: 20px;
 }
