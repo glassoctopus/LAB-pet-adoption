@@ -14,9 +14,13 @@
 
 #app {
   border: 6px solid yellow;
+  margin-block: 3px;
   display: flex;
   flex-flow: wrap;
   padding: 20px;
   justify-content: space-around;
 }
 
+.myCardStyle {
+  margin-bottom: 20px;
+}
