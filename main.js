@@ -245,7 +245,7 @@ const renderToDom = (array) => {
 
   let domString = "";
   for(object of array) {
-    domString += `<div class="card element text-center animal" style="width: 20rem;">
+    domString += `<div class="card element text-center" style="width: 20rem;">
     <div class="card-header"><h5 class="card-title">${object.name}</h5></div>
     <img src="${object.imageUrl}" class="card-img-top" alt="...">
     <div class="card-body">        
