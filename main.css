@@ -1,9 +1,25 @@
-/* body {
+ /* body {
   background-color: black;
   color: white;
 } */
 
-.cardCont {
-  border: 5 solid lightgreen;
+/* .center {
+  margin: auto;
+  width: 90%;
+  border: 6px solid green;
+  padding: 10px;
   display: flex;
+  flex-wrap: wrap;
+} */
+
+#app {
+  border: 6px solid yellow;
+  display: flex;
+  flex-flow: wrap;
+  padding: 20px;
+  justify-content: space-around;
+}
+
+.animal {
+  min-width: 300px;
 }
