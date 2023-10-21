@@ -272,14 +272,14 @@ const renderToDom = (array) => {
   for(object of array) {
     domString += `<div class="card element text-center myCardStyle" style="width: 20rem;">
     <div class="card-header"><h5 class="card-title">${object.name}</h5></div>
-    <img src="${object.imageUrl}" class="card-img-top" alt="...">
+    <img src="${object.imageUrl}" class="card-img-top img" alt="...">
     <div class="card-body">        
         <p class="card-text">color: ${object.color}</p>
         <p>special skill: ${object.specialSkill}</p>        
         <button class="delete" onclick="
         ">DELETE</button>
-        <div class="card-footer ${object.type}"><p>type: ${object.type}</p></div>
       </div>
+      <div class="card-footer ${object.type}"><p>type: ${object.type}</p></div>
       </div>`
   };
   const app = document.querySelector("#app");
