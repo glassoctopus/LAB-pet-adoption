@@ -12,6 +12,16 @@
   height: 100px;
 } 
 
+.centerForm {
+  margin: auto;
+  width: 90%;
+  border: 6px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+} 
+
 .btns{
   color: aliceblue;
   font-size: 16px;

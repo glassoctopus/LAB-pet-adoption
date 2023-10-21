@@ -276,10 +276,10 @@ const renderToDom = (array) => {
     <div class="card-body">        
         <p class="card-text">color: ${object.color}</p>
         <p>special skill: ${object.specialSkill}</p>        
-        <button class="delete" onclick="
+        <button id="delete--${object.id}" onclick="
         ">DELETE</button>
       </div>
-      <div class="card-footer ${object.type}"><p>type: ${object.type}</p></div>
+      <div class="card-footer ${object.type}"><p>${object.type}</p></div>
       </div>`
   };
   const app = document.querySelector("#app");
@@ -302,6 +302,49 @@ const filter = (array, animalType) => {
   renderToDom(petArray);
 }
 
+const form = document.querySelector('form')
 
+const createPet = (event) =>{
+  event.preventDefault();
+  console.log(event);
+  console.log("we should be about to make a new card pet object")
 
+  const newPetObj ={
+    id: pets.length + 1,
+    name: document.querySelector("#nameOnCard").value,
+    color: document.querySelector("#colorOnCard").value,
+    specialSkill: document.querySelector("#skillOnCard").value,
+    //318 is returning on and not the id
+    type: document.querySelector('input[name="radioType"]:checked').value,
+    imageUrl: document.querySelector("#imgOnCard").value, 
+  }
+  console.log(newPetObj);
+  pets.push(newPetObj);
+  renderToDom(pets);
+  form.reset();
+}
+//submit functionality broken :FIX
+form.addEventListener('submit', createPet);
+
+const deletePet = (event) => {
+  console.log(event);
+  console.log("delete function, we are in -batman voice");
   
+  if(event.target.id.includes("delete")){
+    //remove pet once we get the right button
+    //determine the correct object, get id
+    const [,id] = event.target.id.split("--");
+    //identify where in the array is it
+    const index = pets.findIndex(obj => obj.id === Number(id));
+    console.log(index);
+    //re-render with the array
+    pets.splice(index, 1);
+    console.log(pets.length);
+
+    //render with removal in place
+    renderToDom(pets);
+  }
+}
+
+const app = document.querySelector("#app");
+app.addEventListener("click", deletePet);

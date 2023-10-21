@@ -9,7 +9,64 @@
 </head>
 <!-- body -->
 <body>
+  <div class="centerForm">
+    <form>
+      <div class="mb-3">
+        <label for="nameOnCard" class="form-label">Pet Name</label>
+        <input type="text" class="form-control" id="nameOnCard">
+        <div id="nameOnCard" class="form-text">Furry(or fur less) Baby's name</div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="colorOnCard" class="form-label">Pet Coloring</label>
+        <input type="text" class="form-control" id="colorOnCard">
+        <div id="colorOnCard" class="form-text">Furry(or fur less) Baby's Coloring</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="skillOnCard" class="form-label">Pet skill</label>
+        <input type="text" class="form-control" id="skillOnCard">
+        <div id="skillOnCard" class="form-text">Furry(or fur less) Baby's Special Skill</div>
+      </div>
+
+
+      <!-- type radio start -->
+      <div class="form-check">
+        <p>Type of animal</p>
+        <input class="form-check-input" type="radio" name="radioType" id="radioCat" value="cat">
+        <label class="form-check-label" for="radioCat">
+          Cat
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioType" id="radioDog" value="dog">
+        <label class="form-check-label" for="radioDog">
+          Dog
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioType" id="radioDino" value="dino">
+        <label class="form-check-label" for="radioDino">
+          Dino
+        </label>
+      </div>
+
+      <div class="mb-3">
+        <label for="imgOnCard" class="form-label">Pet image from web</label>
+        <input type="text" class="form-control" id="imgOnCard">
+        <div id="imgOnCard" class="form-text">Furry(or fur less) Baby's Image Link</div>
+      </div>
+
+      <div class="mb-3 form-check">
+        <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
   <div class="center">
+ 
     <button type="button" id="cat" class="btn cat btns" style="color: white;">Cat</button>
     <button type="button" id="dog" class="btn dog btns" style="color: white;">Dog</button>
     <button type="button" id="dino" class="btn dino btns" style="color: white;">Dino</button>
