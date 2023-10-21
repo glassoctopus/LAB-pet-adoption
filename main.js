@@ -241,6 +241,31 @@ const pets = [
     }
   ];
 
+const catButton = document.querySelector("#cat"); //variable that grabs the html cat button from DOM
+const dogButton = document.querySelector("#dog");
+const dinoButton = document.querySelector("#dino");
+const allButton = document.querySelector("#all");
+
+catButton.addEventListener('click',() => {
+  // console.log("in filter function starting with cats");
+  filter(pets, "cat");
+})
+
+dogButton.addEventListener('click',() => {
+  // console.log("in filter function starting with dogs");
+  filter(pets, "dog");
+})
+
+dinoButton.addEventListener('click',() => {
+  // console.log("in filter function starting with dino");
+  filter(pets, "dino");
+})
+
+allButton.addEventListener('click',() => {
+  // console.log("in filter function starting with all");
+  filter(pets, "all");
+})
+
 const renderToDom = (array) => {
 
   let domString = "";
@@ -253,7 +278,7 @@ const renderToDom = (array) => {
         <p>special skill: ${object.specialSkill}</p>        
         <button class="delete" onclick="
         ">DELETE</button>
-        <div class="card-footer"><p>type: ${object.type}</p></div>
+        <div class="card-footer ${object.type}"><p>type: ${object.type}</p></div>
       </div>
       </div>`
   };
@@ -263,31 +288,15 @@ const renderToDom = (array) => {
 
 renderToDom(pets);
 
-const catButton = document.querySelector("#cat"); //variable that grabs the html cat button from DOM
-const dogButton = document.querySelector("#dog");
-const dinoButton = document.querySelector("#dino");
-
-catButton.addEventListener('click',() => {
-  // console.log("in filter function starting with cats");
-  filter(pets, "cat");
-})
-
-dogButton.addEventListener('click',() => {
-  // console.log("in filter function starting with cats");
-  filter(pets, "dog");
-})
-
-dinoButton.addEventListener('click',() => {
-  // console.log("in filter function starting with cats");
-  filter(pets, "dino");
-})
-
 const filter = (array, animalType) => {
   let petArray = [];
-  
-  for(pet of array){
-    if(pet.type === animalType){
-      petArray.push(pet);
+  if(animalType === "all"){
+    return renderToDom(pets);
+  }else{
+    for(pet of array){
+      if(pet.type === animalType){
+        petArray.push(pet);
+      }
     }
   }
   renderToDom(petArray);
