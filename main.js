@@ -241,11 +241,6 @@ const pets = [
     }
   ];
 
-const catButton = document.querySelector("#cat"); //variable that grabs the html cat button from DOM
-const dogButton = document.querySelector("#dog");
-const dinoButton = document.querySelector("#dino");
-const allButton = document.querySelector("#all");
-
 const renderToDom = (array) => {
 
   let domString = "";
@@ -266,12 +261,12 @@ const renderToDom = (array) => {
   app.innerHTML = domString;
 };
 
-const filter = (array, animalType) => {
+const filter = (animalType) => {
   let petArray = [];
   if(animalType === "all"){
     return renderToDom(pets);
   }else{
-    for(pet of array){
+    for(pet of pets){
       if(pet.type === animalType){
         petArray.unshift(pet);
       }
@@ -280,75 +275,65 @@ const filter = (array, animalType) => {
   renderToDom(petArray);
 }
 
-const createPet = (event) =>{
-  event.preventDefault();
-  console.log(event);
-  console.log("we should be about to make a new card pet object")
-
-  const newPetObj ={
-    id: pets.length + 1,
-    name: document.querySelector("#nameOnCard").value,
-    color: document.querySelector("#colorOnCard").value,
-    specialSkill: document.querySelector("#skillOnCard").value,
-    type: document.querySelector('input[name="radioType"]:checked').value,     //could be .id if id is a vlaid delinatior
-    imageUrl: document.querySelector("#imgOnCard").value, 
-  }
-  console.log(newPetObj);
-  pets.unshift(newPetObj);
-  renderToDom(pets);
-  form.reset();
-}
-
-const deletePet = (event) => {
-  console.log(event);
-  console.log("delete function, we are in -batman voice");
-  
-  if(event.target.id.includes("delete")){
-    //remove pet once we get the right button
-    //determine the correct object, get id
-    const [,id] = event.target.id.split("--");
-    //identify where in the array is it
-    const index = pets.findIndex(obj => obj.id === Number(id));
-    console.log(index);
-    //re-render with the array
-    pets.splice(index, 1);
-    //render with removal in place
-    renderToDom(pets);
-  }
-}
-
-
-app.addEventListener("click", deletePet);
-
 const events = () => {
   const app = document.querySelector("#app");
-  const filterButtons = document.querySelector("filter-buttons");
+  const form = document.querySelector("form")
+  const filterButtons = document.querySelector("#filter-buttons");
 
-  const form = document.querySelector('form')
-  form.addEventListener('submit', createPet);
+  console.log(filterButtons);
+
+  form.addEventListener('submit', (event) =>{
+    event.preventDefault();
+    console.log(event);
+    console.log("we should be about to make a new card pet object")
   
-  catButton.addEventListener('click',() => {
-    // console.log("in filter function starting with cats");
-    filter(pets, "cat");
-  })
+      const newPetObj ={
+        id: pets.length + 1,
+        name: document.querySelector("#nameOnCard").value,
+        color: document.querySelector("#colorOnCard").value,
+        specialSkill: document.querySelector("#skillOnCard").value,
+        type: document.querySelector('input[name="radioType"]:checked').value,     //could be .id if id is a vlaid delinatior
+        imageUrl: document.querySelector("#imgOnCard").value, 
+      }
+      console.log(newPetObj);
+      pets.unshift(newPetObj);
+      renderToDom(pets);
+      form.reset();
+    }
+  );
   
-  dogButton.addEventListener('click',() => {
-    // console.log("in filter function starting with dogs");
-    filter(pets, "dog");
-  })
-  
-  dinoButton.addEventListener('click',() => {
-    // console.log("in filter function starting with dino");
-    filter(pets, "dino");
-  })
-  
-  allButton.addEventListener('click',() => {
-    // console.log("in filter function starting with all");
-    filter(pets, "all");
+  app.addEventListener("click",  (event) => {
+    console.log(event);
+    console.log("delete function, we are in -batman voice");
+    
+    if(event.target.id.includes("delete")){
+      //remove pet once we get the right button
+      //determine the correct object, get id
+      const [,id] = event.target.id.split("--");
+      //identify where in the array is it
+      const index = pets.findIndex(obj => obj.id === Number(id));
+      console.log(index);
+      //re-render with the array
+      pets.splice(index, 1);
+      //render with removal in place
+      renderToDom(pets);
+    }
   })
 
+  // event listeners for filter buttons
+  filterButtons.addEventListener("click", (event) => {
+    
+    const id = event.target.id;
+    console.log(event, id);
+
+    if(id === "all"){
+      renderToDom(pets);
+    }else{
+      filter(id);
+      console.log("here is your fucking id "+id+" dumbass")
+    }
+  })
 }
-
 
 const startApp = () => {
   renderToDom(pets);
