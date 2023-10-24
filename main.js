@@ -328,7 +328,7 @@ const events = () => {
 
     if(id === "all"){
       renderToDom(pets);
-    }else{
+    }else if(id === "cat" || id === "dog" || id === "dino"){
       filter(id);
       console.log("here is your fucking id "+id+" dumbass")
     }
