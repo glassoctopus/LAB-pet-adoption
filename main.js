@@ -246,26 +246,6 @@ const dogButton = document.querySelector("#dog");
 const dinoButton = document.querySelector("#dino");
 const allButton = document.querySelector("#all");
 
-catButton.addEventListener('click',() => {
-  // console.log("in filter function starting with cats");
-  filter(pets, "cat");
-})
-
-dogButton.addEventListener('click',() => {
-  // console.log("in filter function starting with dogs");
-  filter(pets, "dog");
-})
-
-dinoButton.addEventListener('click',() => {
-  // console.log("in filter function starting with dino");
-  filter(pets, "dino");
-})
-
-allButton.addEventListener('click',() => {
-  // console.log("in filter function starting with all");
-  filter(pets, "all");
-})
-
 const renderToDom = (array) => {
 
   let domString = "";
@@ -286,8 +266,6 @@ const renderToDom = (array) => {
   app.innerHTML = domString;
 };
 
-const form = document.querySelector('form')
-
 const filter = (array, animalType) => {
   let petArray = [];
   if(animalType === "all"){
@@ -295,14 +273,12 @@ const filter = (array, animalType) => {
   }else{
     for(pet of array){
       if(pet.type === animalType){
-        petArray.push(pet);
+        petArray.unshift(pet);
       }
     }
   }
   renderToDom(petArray);
 }
-
-
 
 const createPet = (event) =>{
   event.preventDefault();
@@ -322,8 +298,6 @@ const createPet = (event) =>{
   renderToDom(pets);
   form.reset();
 }
-//submit functionality broken :FIX
-form.addEventListener('submit', createPet);
 
 const deletePet = (event) => {
   console.log(event);
@@ -338,18 +312,41 @@ const deletePet = (event) => {
     console.log(index);
     //re-render with the array
     pets.splice(index, 1);
-    console.log(pets.length);
-
     //render with removal in place
     renderToDom(pets);
   }
 }
 
-const app = document.querySelector("#app");
+
 app.addEventListener("click", deletePet);
 
 const events = () => {
+  const app = document.querySelector("#app");
+  const filterButtons = document.querySelector("filter-buttons");
+
+  const form = document.querySelector('form')
+  form.addEventListener('submit', createPet);
   
+  catButton.addEventListener('click',() => {
+    // console.log("in filter function starting with cats");
+    filter(pets, "cat");
+  })
+  
+  dogButton.addEventListener('click',() => {
+    // console.log("in filter function starting with dogs");
+    filter(pets, "dog");
+  })
+  
+  dinoButton.addEventListener('click',() => {
+    // console.log("in filter function starting with dino");
+    filter(pets, "dino");
+  })
+  
+  allButton.addEventListener('click',() => {
+    // console.log("in filter function starting with all");
+    filter(pets, "all");
+  })
+
 }
 
 
