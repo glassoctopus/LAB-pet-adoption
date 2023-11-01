@@ -330,7 +330,7 @@ const events = () => {
       renderToDom(pets);
     }else if(id === "cat" || id === "dog" || id === "dino"){
       filter(id);
-      console.log("here is your fucking id "+id+" dumbass")
+      console.log("here is your id "+id+" be smart")
     }
   })
 }
